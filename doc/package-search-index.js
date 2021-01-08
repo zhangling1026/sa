@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"dao"},{"l":"impldao"},{"l":"poji"},{"l":"service"},{"l":"veiw"},{"l":"所有程序包","url":"allpackages-index.html"}]
