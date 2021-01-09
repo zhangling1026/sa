@@ -17,5 +17,6 @@ public boolean add(FoodPoji food);
 	
 	//É¾³ýÊ³Æ·
 	public boolean delete(int id);
+	public FoodPoji compare(int id);
 	
 }

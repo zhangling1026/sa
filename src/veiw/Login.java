@@ -1,5 +1,4 @@
 package veiw;
-
 import javax.swing.*;
 
 import service.Database;
@@ -11,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
-
 public class Login extends JFrame {
 	static String name;
 	static String pass;
@@ -21,12 +19,12 @@ public class Login extends JFrame {
 	private JTextField text2;
 	private JButton bt1;
 	private JButton bt2;
-	private JFrame frame = new JFrame("欢迎来到食品管理系统");
+	private JFrame frame = new JFrame();
 
 	public void run() {
 		frame.setSize(500, 400);
 		frame.setVisible(true);
-		frame.setTitle("登录界面");
+		frame.setTitle("食品管理系统");
 		frame.setLayout(null);
 		frame.setLocation(700, 300);
 		lable1 = new JLabel("用户名");
@@ -59,11 +57,11 @@ public class Login extends JFrame {
 				pass = text2.getText();
 				boolean b = Sure(name, pass);
 				if (b == true) {
-					JOptionPane.showMessageDialog(null, "增加信息成功");
+					JOptionPane.showMessageDialog(null, "登录成功,请选择你需要的操作");
 					frame.dispose();
 					new Choose();
 				} else {
-					JOptionPane.showMessageDialog(null, "增加信息失败");
+					JOptionPane.showMessageDialog(null, "登录失败,请重新输入");
 					frame.dispose();
 				}
 

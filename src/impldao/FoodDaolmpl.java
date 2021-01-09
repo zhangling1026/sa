@@ -17,7 +17,9 @@ public class FoodDaolmpl implements FoodDao {
 	// 连接数据库
 	Connection util = new Database().connDatabase();
 
-	// 添加食品
+	/*
+	 * 增加信息
+	 */
 	
 	public boolean add(FoodPoji food) {
 		// TODO Auto-generated method stub
@@ -60,12 +62,13 @@ public class FoodDaolmpl implements FoodDao {
 		String update = "update food set fname=?,ftype=?,fprice=?,fnumber=? where fid=?";
 		PreparedStatement stmt=null;
 		try {
+			
 			stmt = util.prepareStatement(update);
-			stmt.setInt(1, food.getFoodid());
-			stmt.setString(2, food.getName());
-			stmt.setString(3, food.getType());
-			stmt.setFloat(4, food.getPrice());
-			stmt.setString(5, food.getType());
+				stmt.setInt(5, food.getFoodid());
+				stmt.setString(1, food.getName());
+				stmt.setString(2, food.getType());
+				stmt.setFloat(3, food.getPrice());
+				stmt.setInt(4, food.getNumber());
 			int row=stmt.executeUpdate();
 			if(row>0) {
 				return true;
@@ -89,9 +92,9 @@ public class FoodDaolmpl implements FoodDao {
 	}
 
 
-
-	// 通过食品编号查找
-
+/*
+ * 删除信息
+ */
 	public boolean delete(int m) {
 		// TODO Auto-generated method stub
 		String del = "delete from food where fid=?";
@@ -114,6 +117,9 @@ public class FoodDaolmpl implements FoodDao {
 		return false;
 
 	}
+	/*
+	 * 查找信息
+	 */
 	@Override
 	public FoodPoji comparename(String name) {
 		// TODO Auto-generated method stub
@@ -151,7 +157,43 @@ public class FoodDaolmpl implements FoodDao {
 		}
 		return foodrt;
 	}
+/*
+ * 通过食品编号查找
+ */
+public FoodPoji compare(int id) {
+	// TODO Auto-generated method stub
+	FoodPoji foodrt = null;
+	String sql = "select * from food where fid='" + id + "'";
+	ResultSet rs;
+	Statement stmt = null;
+	try {
+		stmt = util.createStatement();
+	} catch (SQLException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	try {
+		rs = stmt.executeQuery(sql);
+		if (rs.next()) {
+			foodrt = new FoodPoji();
+			foodrt.setName(rs.getString("fname"));
+			foodrt.setPrice(rs.getFloat("fprice"));
+			foodrt.setType(rs.getString("ftype"));
+			foodrt.setNumber(rs.getInt("fnumber"));
 
+		} else {
+			JOptionPane.showInternalMessageDialog(null, "食品不存在，请重新输入！");
+		}
+		rs.close();
+		stmt.close();
+		util.close();
 
+	} catch (
+
+	SQLException e) {
+		e.printStackTrace();
+	}
+	return foodrt;
+}
 }
 	

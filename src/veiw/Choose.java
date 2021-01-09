@@ -14,10 +14,9 @@ public class Choose extends JFrame {
 	JPanel panel;
 	JPanel panel2;
 	JLabel label;
-
 	Choose() {
 		this.setSize(900, 700);
-		this.setTitle("食品管理系统");
+		this.setTitle("请选择你需要的操作");
 		this.setLayout(null);
 		this.setLocation(400, 200);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,7 +33,6 @@ public class Choose extends JFrame {
 			
 		});
 		
-
 		bt2 = new JButton("删除食品信息");
 		bt2.setSize(150, 50);
 		bt2.setLocation(150, 500);
